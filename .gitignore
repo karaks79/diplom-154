@@ -1,0 +1,28 @@
+# Файлы с переменными окружения и секретами
+.env
+.env.*
+env/
+
+# Виртуальное окружение
+.venv/
+venv/
+
+# Кэш Python
+__pycache__/
+*__pycache__/
+app/__pycache__/
+*.py[cod]
+
+*.pyc
+app/*.pyc
+
+# Файлы IDE
+.vscode/
+.idea/
+
+# Логи
+logs/
+*.log
+
+# Временные файлы
+*.tmp
