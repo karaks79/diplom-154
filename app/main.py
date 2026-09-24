@@ -9,7 +9,7 @@ from app.database import (
 )
 from app.search import create_search_params, search_users, show_candidate
 from app.state import SearchState, search_states
-from app.vk import get_user_info, longpoll, write_msg
+from app.vk import get_keyboard, get_user_info, longpoll, write_msg
 
 
 if __name__ == "__main__":
@@ -30,6 +30,12 @@ if __name__ == "__main__":
                 if state is None:
                     state = SearchState()
                     search_states[event.user_id] = state
+
+                    write_msg(
+                        event.user_id,
+                        "Выберите действие:",
+                        keyboard=get_keyboard(),
+                    )
 
                 if event.text.lower() == "начать":
                     print("Начинаем поиск...")
@@ -138,9 +144,3 @@ if __name__ == "__main__":
 
                 print("Кандидаты:", state.candidates) 
                 print("Текущий индекс:", state.current_index)
-
-                write_msg(
-                    event.user_id,
-                    "Я получил информацию о твоём профиле!",
-                )
-

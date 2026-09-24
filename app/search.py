@@ -1,6 +1,6 @@
 from app.config import MIN_AGE_DELTA, MAX_AGE_DELTA
 
-from app.vk import app_vk, write_msg
+from app.vk import app_vk, get_keyboard, write_msg
 
 
 def create_search_params(user: dict) -> dict:
@@ -100,6 +100,7 @@ def show_candidate(candidate: dict, user_id: int) -> None:
         user_id,
         message,
         attachment,
+        get_keyboard(),
     )
 
     return True
