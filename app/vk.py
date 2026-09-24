@@ -9,7 +9,8 @@ from datetime import date, datetime
 vk_session = vk_api.VkApi(token=VK_GROUP_TOKEN)
 vk = vk_session.get_api()
 
-# longpoll - механизм библиотеки vk_api, который постоянно ждёт новые события сообщества.
+# longpoll - механизм библиотеки vk_api, который постоянно ждёт
+# новые события сообщества.
 longpoll = VkLongPoll(vk_session)
 
 app_session = vk_api.VkApi(token=VK_APP_TOKEN)
@@ -123,4 +124,3 @@ def get_user_info(user_id: int) -> dict:
         "city_id": city_id,
         "city_name": city_name,
     }
-

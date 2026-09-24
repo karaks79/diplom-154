@@ -6,8 +6,8 @@ from app.vk import app_vk, get_keyboard, write_msg
 def create_search_params(user: dict) -> dict:
     '''
     Параметры поиска пользователей:
-        Диапазон возраста: 
-            От (ВозрастОбратившегося - MIN_AGE_DELTA) 
+        Диапазон возраста:
+            От (ВозрастОбратившегося - MIN_AGE_DELTA)
             До (ВозрастОбратившегося - MAX_AGE_DELTA).
         Противоположный пол: 1 - Ж, 2 - М
         Тот же город
@@ -15,8 +15,8 @@ def create_search_params(user: dict) -> dict:
     return {
         "age_from": user["age"] - MIN_AGE_DELTA,
         "age_to": user["age"] - MAX_AGE_DELTA,
-        "sex": 3 - user["sex"], 
-        "city_id": user["city_id"],           
+        "sex": 3 - user["sex"],
+        "city_id": user["city_id"],
         "city_name": user["city_name"],
     }
 
@@ -35,8 +35,8 @@ def search_users(params: dict, user_exception_id: int) -> list:
     )
 
     return [
-        person  
-        for person in result["items"] 
+        person
+        for person in result["items"]
         if person["id"] != user_exception_id       # Исключая самого ищущего
     ]
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     #     photos = get_top_photos(first_person["id"])
 
     #     print("\nТоп-3 фотографии:")
-        
+
     #     for photo in photos:
     #         attachment = create_photo_attachment(photo)
 

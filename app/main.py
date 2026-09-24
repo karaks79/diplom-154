@@ -2,9 +2,9 @@ from vk_api.longpoll import VkEventType
 
 from app.database import (
     get_favorites_from_db,
-    get_user_db_id, 
-    save_candidate_in_db, 
-    save_favorite_in_db, 
+    get_user_db_id,
+    save_candidate_in_db,
+    save_favorite_in_db,
     save_user_in_db
 )
 from app.search import create_search_params, search_users, show_candidate
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW:
             if event.to_me:
-                #print(f"Новое сообщение: {event.text}")
+                # print(f"Новое сообщение: {event.text}")
                 user = get_user_info(event.user_id)
 
                 print(user)
@@ -50,7 +50,8 @@ if __name__ == "__main__":
                     for candidate in state.candidates:
                         try:
                             candidate_info = get_user_info(candidate["id"])
-                            candidate["db_id"] = save_candidate_in_db(candidate_info)
+                            candidate["db_id"] = save_candidate_in_db(
+                                candidate_info)
                         except Exception:
                             continue
 
@@ -142,5 +143,5 @@ if __name__ == "__main__":
                         message,
                     )
 
-                print("Кандидаты:", state.candidates) 
+                print("Кандидаты:", state.candidates)
                 print("Текущий индекс:", state.current_index)

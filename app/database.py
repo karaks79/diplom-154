@@ -12,7 +12,6 @@ from app.config import (
 def get_connection():
     ''' Создаёт подключение к PostgreSQL. '''
 
-
     return psycopg2.connect(
         host=DB_HOST,
         port=DB_PORT,
@@ -26,7 +25,6 @@ def get_connection():
 def save_user_in_db(user: dict) -> int:
     '''
         Сохраняет пользователя VK в таблицу users.
-        ON CONFLICT (vk_id) DO NOTHING - не добавлять существующий vk_id
     '''
     connection = get_connection()
     cursor = connection.cursor()
@@ -64,7 +62,6 @@ def save_user_in_db(user: dict) -> int:
 def save_candidate_in_db(candidate: dict) -> int:
     '''
     Сохраняет найденного кандидата в таблицу candidates.
-    ON CONFLICT (vk_id) DO NOTHING - не добавлять существующий vk_id
     '''
     connection = get_connection()
     cursor = connection.cursor()
@@ -114,7 +111,6 @@ def save_candidate_in_db(candidate: dict) -> int:
 def save_favorite_in_db(user_id: int, candidate_id: int) -> None:
     '''
     Сохраняет кандидата в избранное пользователя.
-    ON CONFLICT (vk_id) DO NOTHING - не добавлять существующий (user_id, candidate_id)
     '''
     connection = get_connection()
     cursor = connection.cursor()
@@ -196,4 +192,3 @@ if __name__ == "__main__":
     print("Подключение к PostgreSQL успешно!")
 
     connection.close()
-
