@@ -15,6 +15,3 @@ DB_SCHEMA = os.getenv("DB_SCHEMA")
 
 MIN_AGE_DELTA = 20
 MAX_AGE_DELTA = 10
-
-
-
